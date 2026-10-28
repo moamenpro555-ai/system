@@ -33,7 +33,7 @@ async function hwView(){hwList=await api('/me/assignments');
  view(head2('الواجبات','سلّم واجباتك قبل الموعد وتابع درجاتك وتعليقات معلمك')+
  (hwList.length?hwList.map(a=>`<div class="card" style="margin-bottom:14px"><div class="ch"><h3>${esc(a.title)}</h3>${hwPill(a)}</div>
   <div class="mut small" style="margin-bottom:8px">موعد التسليم: ${dt(a.due_at)} · الدرجة الكاملة ${nf(a.max_score)}</div>
-  ${a.description?`<div class="note">${esc(a.description)}</div>`:''}
+  ${a.description?`<div class="note" style="white-space:pre-wrap">${esc(a.description)}</div>`:''}
   ${a.submitted_at?`<div class="small mut">تم التسليم ${dt(a.submitted_at)}</div>${a.text?`<div class="sub-text">${esc(a.text)}</div>`:''}${a.link?`<a href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">رابط التسليم ↗</a>`:''}`:''}
   ${a.score!=null?`<div class="chips" style="margin-top:10px"><div class="chip">درجتك<b>${nf(a.score)} / ${nf(a.max_score)}</b></div></div>${a.feedback?`<div class="note"><b>تعليق المعلم:</b> ${esc(a.feedback)}</div>`:''}`:`<div style="margin-top:12px"><button class="btn sm" onclick="submitHw(${a.id})">${a.submitted_at?'تعديل التسليم':'تسليم الواجب'}</button></div>`}</div>`).join(''):'<div class="card empty">لا توجد واجبات حالياً 🎉</div>'))}
 function submitHw(id){const a=hwList.find(x=>x.id===id),m=modal('تسليم: '+esc(a.title),`<form class="form"><label>إجابتك<textarea name="text" maxlength="5000">${esc(a.text||'')}</textarea></label><label>أو رابط (Google Drive مثلاً)<input name="link" type="url" dir="ltr" placeholder="https://" value="${esc(a.link||'')}"></label><button class="btn">إرسال</button></form>`);

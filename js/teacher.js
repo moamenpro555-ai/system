@@ -1,5 +1,5 @@
 const S=requireRole('teacher');
-const NAV=[['dashboard','لوحة التحكم'],['students','الطلاب'],['groups','المجموعات والجدول'],['attendance','الحضور والغياب'],['homework','الواجبات'],['quizzes','الاختبارات'],['grades','الدرجات والنتائج'],['materials','المواد التعليمية'],['fees','المصروفات']];
+const NAV=[['dashboard','لوحة التحكم'],['students','الطلاب'],['groups','المجموعات والجدول'],['attendance','الحضور والغياب'],['homework','الواجبات'],['quizzes','الاختبارات'],['grades','الدرجات والنتائج'],['materials','المواد التعليمية'],['docs','المذكرات والأوراق'],['fees','المصروفات']];
 const V={dashboard,students:studentsView}; // باقي الشاشات تُضاف من teacher-*.js
 let students=[],filter='';
 shell('teacher','');
