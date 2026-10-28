@@ -1,0 +1,1 @@
+addEventListener('hashchange',go);go();
